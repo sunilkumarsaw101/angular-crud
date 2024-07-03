@@ -1,0 +1,8 @@
+<div class="container">
+    
+    <ul class="details">
+        <h3>Student details</h3>
+        <li *ngFor="let item of studentDetails" class="row" ><strong class="col-4">{{item.key}}:</strong><span class="col-8">{{item.value}}</span></li>
+        <button (click)="close()"> Close</button>
+    </ul>
+</div>

@@ -1,0 +1,16 @@
+.container{
+    margin: 20px auto;
+    width: 100%;
+}
+.heading{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.studentName{
+    text-decoration:underline;
+}
+
+#searchId{
+    float: right; margin: 5px 0;
+}

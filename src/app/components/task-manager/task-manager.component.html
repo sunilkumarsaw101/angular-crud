@@ -1,0 +1,39 @@
+<!-- to understand @contentChild() -->
+<app-title>
+  <!-- <p #para1>this is the title decription</p> -->
+</app-title>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><input type="checkbox"></th>
+      <th>Task Name</th>
+      <th>Progress</th>
+      <th>Due Data</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of taskList">
+      <td><input type="checkbox"></td>
+      <td>{{ task.name }}</td>
+      <td>
+        <div class="progress">
+          <div
+            class="progress-bar"
+            role="progressbar"
+            [ngStyle]="{ 'width': task.progress + '%' }"
+                    
+          ></div>
+        </div>
+
+        <!-- {{task.progress}} -->
+      </td>
+      <td>{{ task.dueDate }}</td>
+      <td>
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,52 @@
+
+
+<div class="edit-student-modal">
+  <h2>Edit Student</h2>
+  <form [formGroup]="studentEditForm">
+    <div class="row">
+      <label for="name" class="col-3">Name:</label>
+      <input class="col-9" id="name" formControlName="name" />
+    </div>
+    <div class="row">
+      <label for="age" class="col-3">Age:</label>
+      <input type="number" class="col-9" id="age" formControlName="age" />
+    </div>
+    <div class="row">
+      <label for="email" class="col-3">Email:</label>
+      <input type="text" class="col-9" id="email" formControlName="email" />
+    </div>
+
+    <div class="row">
+      <label for="place" class="col-3">Place:</label>
+
+      <!-- <ng-select
+        class="col-9"
+        [items]="places"
+        bindLabel="name"
+        bindValue="value"
+        formControlName="place"
+        placeholder="select a place"
+      >
+      </ng-select> -->
+      <select id="place" class="col-9" formControlName="place">
+        <option *ngFor="let place of places" [value]="place.value">{{place.name}}</option>
+      </select>  
+    </div>
+
+    <div class="row">
+      <label class="col-3">Gender:</label>
+      <div class="col-9">
+        <label>
+          <input type="radio" formControlName="gender" value="male" />
+          Male&nbsp;
+        </label>
+        <label>
+          <input type="radio" formControlName="gender" value="female" /> Female
+        </label>
+      </div>
+    </div>
+
+    <button type="button" (click)="onClose()">Close</button>&nbsp;
+    <button type="submit" (click)="onSubmit()">Submit</button>
+  </form>
+</div>

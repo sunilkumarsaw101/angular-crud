@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="heading">
+    <h3>Students List</h3>
+    <button (click)="openCreateModal()">Add</button>
+  </div>
+  <!-- <div>
+    <input type="text" id="searchId" (input)="onSearch($event.target.value)" placeholder="Search By Name">
+  </div> -->
+  <div>
+    <input
+      type="text"
+      id="searchId"
+      [(ngModel)]="searchQuery"
+      placeholder="Search By Name"
+    />
+  </div>
+  <div class="table-container">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Email</th>
+          <th>Hobbies</th>
+          <th>Gender</th>
+          <th>Place</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container
+          *ngIf="studentList | customTableFilter : searchQuery as resultList"
+        >
+          <tr *ngFor="let data of resultList">
+            <td (click)="openViewModal(data.id)" class="studentName">
+              {{ data.name }}
+            </td>
+            <td>{{ data.age }}</td>
+            <td>{{ data.email }}</td>
+            <td>
+              <ul *ngFor="let hobby of data.hobbies" style="list-style: none">
+                <li>{{ hobby }}</li>
+              </ul>
+              <!-- <span>{{hobby}}</span> -->
+            </td>
+            <td>{{ data.gender }}</td>
+            <td>{{ data.place }}</td>
+            <td>
+              <button (click)="openDeleteModal(data.id)">delete</button>&nbsp;
+              <button (click)="openEditModal(data.id)">edit</button>
+              <!-- <button
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#editStudentModal"
+                (click)="openEditModal(data.id)"
+              >
+                edit
+              </button> -->
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- create student -->
+<div *ngIf="isCreateModalOpen">
+  <app-create-student
+    (close)="onClose()"
+    (submit)="handleSubmit($event)"
+  ></app-create-student>
+</div>
+
+<!-- edit student -->
+<app-edit-student
+  *ngIf="isEditModalOpen"
+  [studentId]="currentStudentId"
+  (closeModal)="closeEditModal()"
+  (updateStudent)="updateStudent($event)"
+>
+</app-edit-student>
+
+<!-- delete student -->
+<app-delete-student
+  *ngIf="isDeleteModalOpen"
+  [message]="'Are you sure, you want to delete this student?'"
+  (confirmEvent)="handleConfirm($event)"
+></app-delete-student>
+
+<!-- view student details -->
+
+<app-view-student
+  *ngIf="isViewModalOpen"
+  [studentId]="currentStudentId"
+  (closeModal)="closeDeleteModal()"
+></app-view-student>

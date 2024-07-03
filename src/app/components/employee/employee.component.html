@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="header">
+    <h3>Employees List</h3>
+    <button class="add btn btn-primary" (click)="addEmployee()" >Add</button>
+  </div>
+  <div class="searchBox">
+    <input type="text" placeholder="search..." />
+  </div>
+
+  <div class="tableContainer">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Phone No.</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employeeList">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.age }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.phone }}</td>
+          <td>{{ employee.address }}</td>
+          <td><button class="btn btn-danger">delete</button><button class="btn btn-primary" (click)="updateEmployee(employee)">edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

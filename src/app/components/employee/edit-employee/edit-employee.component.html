@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>
+    Edit Employee
+   </h1>
+   <div mat-dialog-content>
+     <form [formGroup]="employeeEditForm">
+       <mat-form-field>
+         <mat-label>Name</mat-label>
+         <input matInput formControlName="name" />
+       </mat-form-field>
+       <mat-form-field>
+         <mat-label>Email</mat-label>
+         <input matInput formControlName="email" />
+       </mat-form-field>
+       <mat-form-field>
+         <mat-label>Age</mat-label>
+         <input matInput formControlName="age" />
+       </mat-form-field>
+   
+       <div>
+   
+         <label id="gender-radio">Gender</label>
+          <div>
+   
+              <mat-radio-group area-labelledby="gender-radio" formControlName="gender">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+                <mat-radio-button value="other">Other</mat-radio-button>
+              </mat-radio-group>
+          </div>
+       </div>
+   
+       <mat-form-field>
+         <mat-label>phone</mat-label>
+         <input matInput formControlName="phone" />
+       </mat-form-field>
+       <mat-form-field>
+         <mat-label>Address</mat-label>
+         <input matInput formControlName="address" />
+       </mat-form-field>
+     </form>
+   </div>
+   
+   <div mat-dialog-actions>
+       <button mat-button  (click)="onCancel()">Cancel</button>
+       <button mat-button [disabled]="employeeEditForm.invalid" (click)="onSave()">Save</button>
+   
+   </div>
+   
